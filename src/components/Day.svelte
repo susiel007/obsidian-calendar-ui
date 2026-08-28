@@ -121,13 +121,16 @@
       on:pointerleave="{endHover}"
       on:dragstart="{(event) => fileCache.onDragStart(event, file)}"
     >
-      {date.format("D")}
-      <Dots metadata="{metadata}" />
+      <span class="day-num">{date.format("D")}</span>
+      <Dots metadata="{metadata}" isActive="{selectedId === getDateUID(date, 'day')}" />
     </div>
   </MetadataResolver>
 </td>
 
 <style>
+  td {
+    text-align: center;
+  }
   .day {
     background-color: var(--color-background-day);
     border-radius: 4px;

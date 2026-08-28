@@ -1,9 +1,16 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
-
   "include": ["src/**/*", "popper.d.ts"],
   "exclude": ["node_modules/*"],
   "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "sourceMap": true,
+    "strict": false,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "types": ["node", "jest", "svelte"],
     "baseUrl": ".",
     "paths": {

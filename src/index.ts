@@ -17,5 +17,6 @@ declare global {
 }
 
 export { Calendar };
-export type { ICalendarSource, IDot, IDayMetadata, ISourceSettings };
+export type { ICalendarSource, IDot, IDayMetadata, IEvaluatedMetadata, ISourceSettings };
 export { configureGlobalMomentLocale } from "./localization";
+export type { ILocaleOverride, IWeekStartOption } from "./localization";

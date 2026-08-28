@@ -1,12 +1,9 @@
 <script lang="ts">
   import type { IDayMetadata } from "src/types";
 
-  import Dot from "./Dot.svelte";
-
   export let centered: boolean = true;
   export let metadata: IDayMetadata[];
-
-  const MAX_DOTS_PER_SOURCE = 5;
+  export let isActive: boolean = false;
 
   let sortedMeta: IDayMetadata[];
   $: sortedMeta = metadata && metadata.sort((a, b) => a.order - b.order);
@@ -14,11 +11,41 @@
 
 <div class="dot-container" class:centered>
   {#if metadata}
-    {#each sortedMeta as { color, display, dots = [] }}
+    {#each sortedMeta as { color, display, value, dots }}
       {#if display === "calendar-and-menu"}
-        {#each dots.slice(0, MAX_DOTS_PER_SOURCE) as dot}
-          <Dot {...dot} color="{color}" />
-        {/each}
+        {#if dots && dots.length > 0}
+          {#each dots as dot}
+            {#if dot.isFilled}
+              <svg
+                class="dot filled"
+                class:active="{isActive}"
+                style="color:{color}"
+                viewBox="0 0 6 6"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="3" cy="3" r="2"></circle>
+              </svg>
+            {:else}
+              <svg
+                class="dot hollow"
+                class:active="{isActive}"
+                style="color:{color}"
+                viewBox="0 0 6 6"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="3" cy="3" r="2"></circle>
+              </svg>
+            {/if}
+          {/each}
+        {:else if value}
+          <span
+            class="metadata-value"
+            class:active="{isActive}"
+            style="color:{color}"
+          >
+            {value}
+          </span>
+        {/if}
       {/if}
     {/each}
   {/if}
@@ -28,11 +55,35 @@
   .dot-container {
     display: flex;
     flex-wrap: wrap;
-    line-height: 6px;
-    min-height: 6px;
+    font-size: 0.6em;
+    line-height: 1;
+    gap: 2px;
   }
 
   .centered {
     justify-content: center;
+  }
+
+  .metadata-value {
+    display: inline-block;
+  }
+
+  .dot {
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+  }
+
+  .filled {
+    fill: currentColor;
+  }
+
+  .hollow {
+    fill: none;
+    stroke: currentColor;
+  }
+
+  .active {
+    color: var(--text-on-accent) !important;
   }
 </style>
