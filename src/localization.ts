@@ -59,7 +59,7 @@ function overrideGlobalMomentWeekStart(weekStart: IWeekStartOption): void {
   // Save the initial locale weekspec so that we can restore
   // it when toggling between the different options in settings.
   if (!window._bundledLocaleWeekSpec) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- accessing internal moment locale data
     window._bundledLocaleWeekSpec = (<any>moment.localeData())._week;
   }
 

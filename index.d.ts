@@ -48,7 +48,7 @@ export interface ICalendarSource {
     file: TFile
   ) => Promise<IEvaluatedMetadata>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- settings shape varies per source
   defaultSettings: any;
   registerSettings?: (
     containerEl: HTMLElement,

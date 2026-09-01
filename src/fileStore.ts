@@ -60,7 +60,7 @@ export default class PeriodicNotesCache {
       this.initialize();
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- accessing internal workspace event API
     const workspace = this.app.workspace as any;
     plugin.registerEvent(
       workspace.on("periodic-notes:settings-updated", this.initialize, this)
@@ -150,7 +150,7 @@ export default class PeriodicNotesCache {
   }
 
   public onDragStart(event: DragEvent, file: TFile): void {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- dragManager not in public type defs
     const dragManager = (<any>this.app).dragManager;
     const dragData = dragManager.dragFile(event, file);
     dragManager.onDragStart(event, dragData);

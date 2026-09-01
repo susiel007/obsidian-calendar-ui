@@ -13,7 +13,7 @@ describe("getMonth", () => {
 
   describe("january", () => {
     it("creates correct calendar starting on Sunday", () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- accessing internal moment locale data
       (<any>moment.localeData())._week.dow = 0;
 
       const monthData = getMonth(
@@ -34,7 +34,7 @@ describe("getMonth", () => {
     });
 
     it("creates correct calendar starting on Monday", () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- accessing internal moment locale data
       (<any>moment.localeData())._week.dow = 1;
 
       const monthData = getMonth(
@@ -57,7 +57,7 @@ describe("getMonth", () => {
 
   describe("february", () => {
     it("creates correct calendar starting on Sunday", () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- accessing internal moment locale data
       (<any>moment.localeData())._week.dow = 0;
 
       const monthData = getMonth(
@@ -78,7 +78,7 @@ describe("getMonth", () => {
     });
 
     it("creates correct calendar starting on Monday", () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- accessing internal moment locale data
       (<any>moment.localeData())._week.dow = 1;
 
       const monthData = getMonth(

@@ -3,7 +3,7 @@
   export let tooltip: string;
   export let direction: "left" | "right";
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- isMobile not in public type defs
   let isMobile = (window.app as any).isMobile;
 </script>
 
